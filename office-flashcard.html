@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Office Flashcard Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="style/office.css">
+</head>
+<body>
+    <!-- START SCREEN -->
+    <section class="start_screen" id="start_screen">
+        <header class="wrapper">
+            <h1>The Ultimate<span class="break">Office Quiz</span></h1>
+            <p class="introPara">Are you an Office fanatic? Prove it by acing this quiz!</p>
+            <button value="Click" onclick="toggle_visibility();" class="startButton" id="start">Let's Play!</button>
+            <p class="design">Designed by Tam Phan</p>
+        </header>
+    </section>
+    <!-- START SCREEN END -->
+
+    <!-- GAME START -->
+    <section class="game_screen" id="game_screen">
+        <div class="gameWrapper">
+            <h1>The Ultimate Office Quiz</h1>
+
+            <form id="game">
+                <div class="formContainer">
+                    <div class="question"></div>
+                    <div class="choices">
+                        <label id="labelid" class="labelclass">
+                            <input data-id="0" id="radioid1" type="radio" name="answer"/>
+                            <span class="options" id="r1"></span>
+                        </label>
+
+                        <label id="labelid" class="labelclass" >
+                            <input data-id="1" id="radioid2" class="correct" type="radio" name="answer"/>
+                            <span class="options" id="r2"></span>
+                        </label>
+                        <label id="labelid" class="labelclass">
+                            <input data-id="2" id="radioid3" type="radio" name="answer"/>
+                            <span class="options" id="r3"></span>
+                        </label>
+
+                        <label id="labelid" class="labelclass">
+                            <input data-id="3" id="radioid4" type="radio" name="answer"/>
+                            <span id="r4"></span>
+                        </label>
+                    </div>
+
+                    <input onclick="update_score_green()" id="submitButton" class="submitButton" type="submit" value="Submit Answer">
+                    <button onclick="cycle_questions()" id="nextQuestion" class="nextQuestion">Next Question</button>
+                </div>
+            </form>
+
+
+            <div class="scoreCounter"><h3>Score: <span id="scoreUpdate">0</span>/15</h3></div>
+        </div>
+    </section>
+
+    <!-- END SCREEN START -->
+
+    <section class="end_screen" id="end_screen">
+        <div class="scoreWrapper">
+            <h1>The Ultimate Office Quiz</h1>
+            <h2>Your Final Score</h2>
+            <div class="finalScoreWrapper"><h3><span id="finalScore"></span>/15</h3></div>
+
+            <button class="restart" onClick="window.location.reload()">Play Again?</button>
+        </div>
+    </section>
+    <!-- END SCREEN END -->
+
+    <!-- GAME END -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".submitButton").click(function(){
+                // if user clicks submit button and no button was clicked
+                // send alert that user must pick answer 
+                if ($("input[name='answer']:checked").length === 0) {
+                   alert('Please choose an answer.');
+                }
+                // when user clicks a radio and submit button
+                // highlight correct answer
+                else {
+                  // $("label.rightAnswer").removeClass("rightAnswer").addClass("green");
+                }
+            });
+
+            $(".newQuestion").click(function(){
+                $('input').prop('checked', false);
+            });
+
+            // $(".nextQuestion").click(function(){
+            //     // if user clicks next question button and no button was clicked
+            //     // send alert that user must pick answer 
+            //     if ($("input[name='answer']:checked").length === 0) {
+            //        alert('Please choose an answer.');
+            //     }
+            // });
+        });
+    </script>
+    <script src="office.js"></script>
+</body>
+</html>
